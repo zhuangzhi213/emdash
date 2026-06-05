@@ -5,7 +5,6 @@ import { formsPlugin } from "@emdash-cms/plugin-forms";
 import webhookNotifier from "@emdash-cms/plugin-webhook-notifier";
 import { defineConfig, fontProviders } from "astro/config";
 import emdash from "emdash/astro";
-import { magicLink, github } from "emdash";
 
 export default defineConfig({
 	output: "server",
@@ -17,19 +16,6 @@ export default defineConfig({
 	integrations: [
 		react(),
 		emdash({
-			auth: {
-				providers: [
-					// 邮箱登录配置
-					magicLink({
-						from: "1716571003@qq.com", 
-					}),
-					// GitHub OAuth 登录配置
-					github({
-						clientId: "Iv23liofujTesTc8mVtO",
-						clientSecret: "f88925466d0eff9779300d21e63b5808534610da",
-					}),
-				],
-			},
 			database: d1({ binding: "DB", session: "auto" }),
 			storage: r2({ binding: "MEDIA" }),
 			plugins: [formsPlugin()],
